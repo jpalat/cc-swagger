@@ -15,6 +15,79 @@ basePath: /api/v1
 produces:
   - application/json
 paths:
+
+
+  /dishes:
+    get:
+      summary: All dishes.
+      description: |
+        Returns the dishes for all restaurants.
+      tags:
+        - Dishes
+      responses:
+        200:
+          description: Dishes
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Dish'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /dishes/{id}:
+    get:
+      summary: Get a dish.
+      description: |
+        Returns a dish.
+      parameters:
+        - name: id
+          in: path
+          description: dish identifier.
+          required: true
+          type: number
+  
+      tags:
+        - Dish
+      responses:
+        200:
+          description: Dish
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Dish'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /dishes/{id}/traits:
+    get:
+      summary: Get the list of traits for a dish.
+      description: |
+        Traits represent properties of the dish defined independently.
+        Allergies associated or special diets or menus.
+      parameters:
+        - name: id
+          in: path
+          description: restaurant identifier.
+          required: true
+          type: number
+  
+      tags:
+        - Dish
+        - Traits
+      responses:
+        200:
+          description: Reviews
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Trait'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
   /restaurants:
     get:
       summary: Restaurants in the system.
@@ -227,79 +300,6 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
-
-  /dishes:
-    get:
-      summary: All dishes.
-      description: |
-        Returns the dishes for all restaurants.
-      tags:
-        - Dishes
-      responses:
-        200:
-          description: Dishes
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Dish'
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
-  /dishes/{id}:
-    get:
-      summary: Get a dish.
-      description: |
-        Returns a dish.
-      parameters:
-        - name: id
-          in: path
-          description: dish identifier.
-          required: true
-          type: number
-  
-      tags:
-        - Dish
-      responses:
-        200:
-          description: Dish
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Dish'
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
-  /dishes/{id}/traits:
-    get:
-      summary: Get the list of traits for a dish.
-      description: |
-        Traits represent properties of the dish defined independently.
-        Allergies associated or special diets or menus.
-      parameters:
-        - name: id
-          in: path
-          description: restaurant identifier.
-          required: true
-          type: number
-  
-      tags:
-        - Dish
-        - Traits
-      responses:
-        200:
-          description: Reviews
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Trait'
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
-
-
   /users:
     get:
       summary: All users.
