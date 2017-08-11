@@ -1,9 +1,9 @@
 # Jay Palat
-# Restaurant Reviews
+# Chefs.cloud
 swagger: '2.0'
 info:
-  title: Restaurants Review API
-  description: Sample Restaurante Review API
+  title: Chefs.cloud API
+  description: Sample Chefs.cloud API
   version: "1.0.0"
 # the domain of the service
 host: 45.55.241.174:8080
@@ -15,8 +15,6 @@ basePath: /api/v1
 produces:
   - application/json
 paths:
-
-
   /dishes:
     get:
       summary: All dishes.
